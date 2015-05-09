@@ -117,7 +117,7 @@ impl ::std::default::Default for Struct_TBuiltInResource {
     fn default() -> Self { unsafe { ::std::mem::zeroed() } }
 }
 pub type TBuiltInResource = Struct_TBuiltInResource;
-pub type Enum_Unnamed1 = ::libc::c_uint;
+pub type Enum_EShLanguage = ::libc::c_uint;
 pub const EShLangVertex: ::libc::c_uint = 0;
 pub const EShLangTessControl: ::libc::c_uint = 1;
 pub const EShLangTessEvaluation: ::libc::c_uint = 2;
@@ -125,15 +125,15 @@ pub const EShLangGeometry: ::libc::c_uint = 3;
 pub const EShLangFragment: ::libc::c_uint = 4;
 pub const EShLangCompute: ::libc::c_uint = 5;
 pub const EShLangCount: ::libc::c_uint = 6;
-pub type EShLanguage = Enum_Unnamed1;
-pub type Enum_Unnamed2 = ::libc::c_uint;
+pub type EShLanguage = Enum_EShLanguage;
+pub type Enum_EShLanguageMask = ::libc::c_uint;
 pub const EShLangVertexMask: ::libc::c_uint = 1;
 pub const EShLangTessControlMask: ::libc::c_uint = 2;
 pub const EShLangTessEvaluationMask: ::libc::c_uint = 4;
 pub const EShLangGeometryMask: ::libc::c_uint = 8;
 pub const EShLangFragmentMask: ::libc::c_uint = 16;
 pub const EShLangComputeMask: ::libc::c_uint = 32;
-pub type EShLanguageMask = Enum_Unnamed2;
+pub type EShLanguageMask = Enum_EShLanguageMask;
 pub type Enum_EShExecutable = ::libc::c_uint;
 pub const EShExVertexFragment: ::libc::c_uint = 0;
 pub const EShExFragment: ::libc::c_uint = 1;
