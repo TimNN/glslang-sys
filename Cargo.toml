@@ -1,0 +1,14 @@
+[package]
+name = "glslang-sys"
+version = "0.0.1"
+authors = ["Tim Neumann <mail@timnn.me>"]
+
+license = "MIT"
+
+build = "build.rs"
+
+[dependencies]
+libc = "*"
+
+[build-dependencies]
+gcc = "*"
