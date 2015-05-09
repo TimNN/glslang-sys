@@ -8,9 +8,9 @@ extern crate gcc;
 
 
 #[cfg(unix)]
-const OSDependent: &'static [&'static str] = &["glslang", "OSDependent", "Linux"];
+const OS_DEPENDENT: &'static [&'static str] = &["glslang", "OSDependent", "Linux"];
 #[cfg(win)]
-const OSDependent: &'static [&'static str] = &["glslang", "OSDependent", "Windows"];
+const OS_DEPENDENT: &'static [&'static str] = &["glslang", "OSDependent", "Windows"];
 
 const SEARCH_DIRS: &'static [&'static [&'static str]] = &[
     &["glslang"],
@@ -20,7 +20,7 @@ const SEARCH_DIRS: &'static [&'static [&'static str]] = &[
     &["glslang", "MachineIndependent"],
     &["glslang", "MachineIndependent", "preprocessor"],
     &["glslang", "Public"],
-    OSDependent,
+    OS_DEPENDENT,
     &["OGLCompilersDLL"],
 ];
 
