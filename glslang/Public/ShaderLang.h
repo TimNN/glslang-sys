@@ -77,7 +77,7 @@ SH_IMPORT_EXPORT int __fastcall ShFinalize();
 //
 // Types of languages the compiler can consume.
 //
-typedef enum {
+typedef enum EShLanguage {
     EShLangVertex,
     EShLangTessControl,
     EShLangTessEvaluation,
@@ -87,7 +87,7 @@ typedef enum {
     EShLangCount,
 } EShLanguage;
 
-typedef enum {
+typedef enum EShLanguageMask {
     EShLangVertexMask         = (1 << EShLangVertex),
     EShLangTessControlMask    = (1 << EShLangTessControl),
     EShLangTessEvaluationMask = (1 << EShLangTessEvaluation),
