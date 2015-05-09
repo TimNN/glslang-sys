@@ -6,7 +6,7 @@ extern crate gcc;
 
 #[cfg(unix)]
 const OS_DEPENDENT: &'static [&'static str] = &["glslang", "OSDependent", "Linux"];
-#[cfg(win)]
+#[cfg(windows)]
 const OS_DEPENDENT: &'static [&'static str] = &["glslang", "OSDependent", "Windows"];
 
 const SEARCH_DIRS: &'static [&'static [&'static str]] = &[
