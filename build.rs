@@ -1,7 +1,4 @@
-#![feature(path_ext)]
-
 use std::{env, fs};
-use std::fs::PathExt;
 use std::path::{Path, PathBuf};
 
 extern crate gcc;
@@ -54,7 +51,7 @@ fn find_sources<P: AsRef<Path>>(root: &P) -> Vec<PathBuf> {
             let mut ok = false;
 
             if let Some(ext) = path.extension() {
-                if path.is_file() && ext == "cpp" {
+                if is_file(&path) && ext == "cpp" {
                     ok = true;
                 }
             }
@@ -78,4 +75,8 @@ fn resolve_search_dirs<P: AsRef<Path>>(root: &P) -> Vec<PathBuf> {
 
         buf
     }).collect()
+}
+
+fn is_file<P: AsRef<Path>>(path: &P) -> bool {
+    fs::metadata(path).map(|m| m.is_file()).unwrap_or(false)
 }
