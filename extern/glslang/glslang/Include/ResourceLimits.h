@@ -37,7 +37,13 @@
 #ifndef _RESOURCE_LIMITS_INCLUDED_
 #define _RESOURCE_LIMITS_INCLUDED_
 
-struct TLimits {
+#ifdef __cplusplus
+    extern "C" {
+#endif
+
+#include <stdbool.h>
+
+typedef struct TLimits {
     bool nonInductiveForLoops;
     bool whileLoops;
     bool doWhileLoops;
@@ -47,9 +53,9 @@ struct TLimits {
     bool generalSamplerIndexing;
     bool generalVariableIndexing;
     bool generalConstantMatrixVectorIndexing;
-};
+} TLimits;
 
-struct TBuiltInResource {
+typedef struct TBuiltInResource {
     int maxLights;
     int maxClipPlanes;
     int maxTextureUnits;
@@ -135,6 +141,10 @@ struct TBuiltInResource {
     int maxSamples;
 
     TLimits limits;
-};
+} TBuiltInResource;
+
+#ifdef __cplusplus
+    }  // end extern "C"
+#endif
 
 #endif // _RESOURCE_LIMITS_INCLUDED_
