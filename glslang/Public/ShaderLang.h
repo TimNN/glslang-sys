@@ -96,16 +96,20 @@ typedef enum {
     EShLangComputeMask        = (1 << EShLangCompute),
 } EShLanguageMask;
 
-namespace glslang {
+#ifdef __cplusplus
+    namespace glslang {
+#endif
 
 const char* StageName(EShLanguage);
 
-} // end namespace glslang
+#ifdef __cplusplus
+    } // end namespace glslang
+#endif
 
 //
 // Types of output the linker will create.
 //
-typedef enum {
+typedef enum EShExecutable {
     EShExVertexFragment,
     EShExFragment
 } EShExecutable;
@@ -113,7 +117,7 @@ typedef enum {
 //
 // Optimization level for the compiler.
 //
-typedef enum {
+typedef enum EShOptimizationLevel {
     EShOptNoGeneration,
     EShOptNone,
     EShOptSimple,       // Optimizations that can be done quickly
@@ -123,23 +127,23 @@ typedef enum {
 //
 // Message choices for what errors and warnings are given.
 //
-enum EShMessages {
+typedef enum EShMessages {
     EShMsgDefault          = 0,         // default is to give all required errors and extra warnings
     EShMsgRelaxedErrors    = (1 << 0),  // be liberal in accepting input
     EShMsgSuppressWarnings = (1 << 1),  // suppress all warnings, except those required by the specification
     EShMsgAST              = (1 << 2),  // print the AST intermediate representation
-};
+} EShMessages;
 
 //
 // Build a table for bindings.  This can be used for locating
 // attributes, uniforms, globals, etc., as needed.
 //
-typedef struct {
+typedef struct ShBinding {
     const char* name;
     int binding;
 } ShBinding;
 
-typedef struct {
+typedef struct ShBindingTable {
     int numBindings;
     ShBinding* bindings;  // array of bindings
 } ShBindingTable;
@@ -179,9 +183,9 @@ SH_IMPORT_EXPORT int ShCompile(
     const EShOptimizationLevel,
     const TBuiltInResource *resources,
     int debugOptions,
-    int defaultVersion = 110,            // use 100 for ES environment, overridden by #version in shader
-    bool forwardCompatible = false,      // give errors for use of deprecated features
-    EShMessages messages = EShMsgDefault // warnings and errors
+    int defaultVersion,     // use 100 for ES environment, overridden by #version in shader
+    bool forwardCompatible, // give errors for use of deprecated features
+    EShMessages messages    // warnings and errors
     );
 
 SH_IMPORT_EXPORT int ShLink(
@@ -242,6 +246,8 @@ SH_IMPORT_EXPORT int ShGetUniformLocation(const ShHandle uniformMap, const char*
 // whereas in this model intra-stage linking can occur at the parse tree
 // (treeRoot in TIntermediate) level, and then a full stage can be lowered.
 //
+
+#ifdef __cplusplus
 
 #include <list>
 
@@ -349,5 +355,7 @@ private:
 };
 
 } // end namespace glslang
+
+#endif // __cplusplus
 
 #endif // _COMPILER_INTERFACE_INCLUDED_
