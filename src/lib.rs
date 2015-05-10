@@ -218,3 +218,11 @@ extern "C" {
     pub fn ShGetUniformLocation(uniformMap: ShHandle,
                                 name: *const ::libc::c_char) -> ::libc::c_int;
 }
+
+#[test]
+fn it_initializes_and_finalizes() {
+    unsafe {
+        ShInitialize();
+        ShFinalize();
+    }
+}
